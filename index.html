@@ -5,34 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>박성규 | Sunngyu Park</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Pretendard', sans-serif; }
     </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-zinc-800">
+<body class="bg-zinc-950 text-zinc-100 happier-selection antialiased selection:bg-zinc-800">
 
-    <main class="max-w-2xl mx-auto px-6 py-20 space-y-16">
+    <main class="max-w-2xl mx-auto px-6 py-16 space-y-16">
 
-        <!-- Header -->
-        <header class="space-y-4">
-            <h1 class="text-3xl font-semibold tracking-tight text-white">박성규 (Sunngyu Park)</h1>
-            <p class="text-zinc-400 text-sm leading-relaxed">
-                기업 HRD Lead / 국내 1호 ICF ACTC 팀코치 / KAIST PMBA 13기
-            </p>
+        <!-- Header & Profile Image -->
+        <header class="flex flex-col sm:flex-row items-start sm:items-center gap-6 pb-8 border-b border-zinc-900">
+            <!-- 프로필 사진: 리포지토리에 올릴 이미지 파일명으로 지정 (예: profile.jpg) -->
+            <img src="profile.jpg" alt="박성규 프로필 사진" class="w-24 h-24 rounded-full object-cover border border-zinc-800">
+            <div class="space-y-2">
+                <h1 class="text-2xl font-bold tracking-tight text-white">박성규 (Sunngyu Park)</h1>
+                <p class="text-zinc-400 text-sm leading-relaxed">
+                    기업 HRD Lead / 국내 1호 ICF ACTC 팀코치 / KAIST PMBA 13기
+                </p>
+            </div>
         </header>
 
-        <!-- Profile & Expertise -->
+        <!-- About & Philosophy -->
         <section class="space-y-4">
-            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-500">Profile</h2>
-            <div class="space-y-2 text-sm text-zinc-300">
-                <p><strong class="text-white font-medium">Role:</strong> 기업 HRD 팀장</p>
-                <p><strong class="text-white font-medium">Coaching:</strong> ICF PCC, ICF ACTC (국내 1호 팀코치), CPCC</p>
-                <p><strong class="text-white font-medium">Education:</strong> KAIST Professional MBA 재학</p>
+            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-500">About & Philosophy</h2>
+            <p class="text-sm text-zinc-300 leading-relaxed">
+                조직과 사람의 성장을 디자인하며, 리더와 팀이 스스로 자각과 각성에 이르도록 돕습니다. 
+                사람들의 온전한 가능성을 신뢰하고, 목표를 선명히 하는 대화를 만들어 갑니다.
+            </p>
+        </section>
+
+        <!-- Expertise & Role -->
+        <section class="space-y-4">
+            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-500">Expertise</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/80 space-y-1">
+                    <div class="font-medium text-white">Business Coaching</div>
+                    <div class="text-zinc-400 text-xs">C-Level 코칭, ICF PCC & ACTC (국내 1호 팀코치), CPCC</div>
+                </div>
+                <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/80 space-y-1">
+                    <div class="font-medium text-white">Leadership & Culture</div>
+                    <div class="text-zinc-400 text-xs">기업 리더/팀 트레이닝, 팀워크 개발, 조직문화 에이블러</div>
+                </div>
             </div>
         </section>
 
-        <!-- Books & Writing -->
+        <!-- Major Projects -->
+        <section class="space-y-3">
+            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-500">Major Projects</h2>
+            <p class="text-xs text-zinc-400 leading-relaxed">
+                현대자동차, SKT, LG, SSG.COM, G마켓, 아스트라제네카, 한독, HL Klemove, 남양유업 등 유수의 기업 일하는 방식 내재화 및 팀효과성·리더십 워크숍 설계 및 진행
+            </p>
+        </section>
+
+        <!-- Publications & Writing -->
         <section class="space-y-4">
             <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-500">Publications & Writing</h2>
             <ul class="space-y-2 text-sm text-zinc-300">
@@ -56,16 +82,16 @@
             </div>
         </section>
 
-        <!-- Routine -->
+        <!-- Routine & Life -->
         <section class="space-y-4">
-            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-500">Routine</h2>
+            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-500">Routine & Life</h2>
             <p class="text-sm text-zinc-300">
-                Running (10km / PB 41:40)
+                Running (10km / PB 41:40) / 네 아이의 아빠
             </p>
         </section>
 
         <!-- Links -->
-        <section class="space-y-4 pt-4 border-t border-zinc-900">
+        <section class="space-y-4 pt-6 border-t border-zinc-900">
             <div class="flex gap-6 text-sm">
                 <a href="https://www.linkedin.com/in/%EC%84%B1%EA%B7%9C-%EB%B0%95-543b2062/" target="_blank" class="text-zinc-400 hover:text-white transition-colors">
                     LinkedIn
