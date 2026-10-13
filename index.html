@@ -3,103 +3,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>박성규 | Sunngyu Park</title>
+    <title>박성규 | Sunggyu Park</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Pretendard', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 happier-selection antialiased selection:bg-zinc-800">
+<body class="bg-[#FBF9F5] text-stone-800 antialiased selection:bg-orange-100">
 
-    <main class="max-w-2xl mx-auto px-6 py-16 space-y-16">
+    <main class="max-w-3xl mx-auto px-6 py-24 space-y-24">
 
-        <!-- Header & Profile Image -->
-        <header class="flex flex-col sm:flex-row items-start sm:items-center gap-6 pb-8 border-b border-zinc-900">
-            <!-- 프로필 사진: 리포지토리에 올릴 이미지 파일명으로 지정 (예: profile.jpg) -->
-            <img src="profile.jpg" alt="박성규 프로필 사진" class="w-24 h-24 rounded-full object-cover border border-zinc-800">
+        <!-- Header / Intro -->
+        <header class="space-y-8">
             <div class="space-y-2">
-                <h1 class="text-2xl font-bold tracking-tight text-white">박성규 (Sunngyu Park)</h1>
-                <p class="text-zinc-400 text-sm leading-relaxed">
-                    기업 HRD Lead / 국내 1호 ICF ACTC 팀코치 / KAIST PMBA 13기
-                </p>
+                <h1 class="text-3xl font-medium tracking-tight text-stone-900">박성규 <span class="text-stone-400 font-light text-xl">| Sunggyu Park</span></h1>
+            </div>
+            
+            <!-- 프로필 사진 -->
+            <div class="overflow-hidden rounded-2xl border border-stone-200/80 shadow-sm bg-white max-w-md">
+                <img src="profile.jpg" alt="박성규 프로필 사진" class="w-full h-auto object-cover max-h-[450px]">
             </div>
         </header>
 
-        <!-- About & Philosophy -->
-        <section class="space-y-4">
-            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-500">About & Philosophy</h2>
-            <p class="text-sm text-zinc-300 leading-relaxed">
-                조직과 사람의 성장을 디자인하며, 리더와 팀이 스스로 자각과 각성에 이르도록 돕습니다. 
-                사람들의 온전한 가능성을 신뢰하고, 목표를 선명히 하는 대화를 만들어 갑니다.
+        <!-- ✍️ Writings & Thoughts (에세이 및 칼럼 슬라이더) -->
+        <section class="space-y-6">
+            <div class="flex justify-between items-baseline">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-orange-600 font-medium">Writings & Thoughts</h2>
+                <!-- 좌우 화살표 버튼 그룹 -->
+                <div class="flex items-center gap-2">
+                    <span class="text-xs text-stone-400 font-light mr-1 hidden sm:inline">좌우로 넘겨보세요</span>
+                    <button onclick="scrollSlider(-1)" class="w-7 h-7 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:border-orange-400 hover:text-orange-600 transition-colors shadow-sm" aria-label="이전 글">
+                        &larr;
+                    </button>
+                    <button onclick="scrollSlider(1)" class="w-7 h-7 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-600 hover:border-orange-400 hover:text-orange-600 transition-colors shadow-sm" aria-label="다음 글">
+                        &rarr;
+                    </button>
+                </div>
+            </div>
+
+            <!-- 좌우 슬라이드 카드 영역 -->
+            <div id="slider" class="flex gap-4 overflow-x-auto no-scrollbar pb-4 snap-x snap-mandatory scroll-smooth">
+                
+                <!-- 글 카드 1: 녹내장이 찾아왔다 -->
+                <article class="min-w-[300px] max-w-[340px] p-6 rounded-2xl bg-white border border-stone-200/80 hover:border-orange-200 shadow-sm transition-all snap-start flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <span class="text-[11px] font-mono text-orange-600 uppercase tracking-wider">Essay &middot; 2026</span>
+                        <h3 class="font-medium text-stone-900 text-base leading-snug">녹내장이 찾아왔다</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed font-light line-clamp-4">
+                            눈을 감는 시간, 삶이 선명해졌다. 얼마 전 정기 종합검진을 받았다. 검진 결과지에는 ‘녹내장 의심 소견이 있으니...
+                        </p>
+                    </div>
+                    <button onclick="openModal('essay1')" class="text-xs text-stone-500 hover:text-orange-600 font-medium text-left transition-colors pt-2 border-t border-stone-100">
+                        전문 읽기 &rarr;
+                    </button>
+                </article>
+
+                <!-- 글 카드 2: 회사에서 가장 힘든 사람은 -->
+                <article class="min-w-[300px] max-w-[340px] p-6 rounded-2xl bg-white border border-stone-200/80 hover:border-orange-200 shadow-sm transition-all snap-start flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <span class="text-[11px] font-mono text-orange-600 uppercase tracking-wider">Jul 29, 2026</span>
+                        <h3 class="font-medium text-stone-900 text-base leading-snug">회사에서 가장 힘든 사람은, 내가 만든 사람입니다</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed font-light line-clamp-4">
+                            회사에서 가장 힘든 것은 일이 아니라 사람이라는 말을 자주 듣습니다. 회의가 끝나고 나오는데 기분이 상합니다...
+                        </p>
+                    </div>
+                    <button onclick="openModal('essay2')" class="text-xs text-stone-500 hover:text-orange-600 font-medium text-left transition-colors pt-2 border-t border-stone-100">
+                        전문 읽기 &rarr;
+                    </button>
+                </article>
+
+                <!-- 글 카드 3: 좋은 팀은 탁월한 사람들의 집합이 아니다 -->
+                <article class="min-w-[300px] max-w-[340px] p-6 rounded-2xl bg-white border border-stone-200/80 hover:border-orange-200 shadow-sm transition-all snap-start flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <span class="text-[11px] font-mono text-orange-600 uppercase tracking-wider">Jul 10, 2026</span>
+                        <h3 class="font-medium text-stone-900 text-base leading-snug">좋은 팀은 탁월한 사람들의 집합이 아니다</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed font-light line-clamp-4">
+                            많은 리더들이 이런 말을 합니다. "우리 팀은 한 명씩 보면 다 좋은 사람들인데 같이 일하기는 쉽지 않습니다."...
+                        </p>
+                    </div>
+                    <button onclick="openModal('essay3')" class="text-xs text-stone-500 hover:text-orange-600 font-medium text-left transition-colors pt-2 border-t border-stone-100">
+                        전문 읽기 &rarr;
+                    </button>
+                </article>
+
+                <!-- 글 카드 4: 팀 문제의 8할은 사람의 문제가 아니다 -->
+                <article class="min-w-[300px] max-w-[340px] p-6 rounded-2xl bg-white border border-stone-200/80 hover:border-orange-200 shadow-sm transition-all snap-start flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <span class="text-[11px] font-mono text-orange-600 uppercase tracking-wider">Jul 9, 2026</span>
+                        <h3 class="font-medium text-stone-900 text-base leading-snug">팀 문제의 8할은 사람의 문제가 아니다</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed font-light line-clamp-4">
+                            팀에 문제가 생기면 리더는 바빠집니다. 팀원들의 갈등을 중재해야 하고, 회의를 정리해야 하며...
+                        </p>
+                    </div>
+                    <button onclick="openModal('essay4')" class="text-xs text-stone-500 hover:text-orange-600 font-medium text-left transition-colors pt-2 border-t border-stone-100">
+                        전문 읽기 &rarr;
+                    </button>
+                </article>
+
+            </div>
+
+            <!-- 전체 글 목록 링크 리스트 -->
+            <div class="pt-2 border-t border-stone-200/60 space-y-3">
+                <div class="text-xs font-mono uppercase tracking-widest text-orange-600 font-medium pt-2">All Articles</div>
+                <ul class="space-y-2 text-sm">
+                    <li>
+                        <button onclick="openModal('essay1')" class="w-full flex justify-between items-baseline text-left group py-1">
+                            <span class="text-stone-700 group-hover:text-orange-600 transition-colors font-light">녹내장이 찾아왔다 : 눈을 감는 시간, 삶이 선명해졌다</span>
+                            <span class="text-xs text-stone-400 font-mono">2026</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="openModal('essay2')" class="w-full flex justify-between items-baseline text-left group py-1">
+                            <span class="text-stone-700 group-hover:text-orange-600 transition-colors font-light">회사에서 가장 힘든 사람은, 내가 만든 사람입니다</span>
+                            <span class="text-xs text-stone-400 font-mono">Jul 29</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="openModal('essay3')" class="w-full flex justify-between items-baseline text-left group py-1">
+                            <span class="text-stone-700 group-hover:text-orange-600 transition-colors font-light">좋은 팀은 탁월한 사람들의 집합이 아니다</span>
+                            <span class="text-xs text-stone-400 font-mono">Jul 10</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="openModal('essay4')" class="w-full flex justify-between items-baseline text-left group py-1">
+                            <span class="text-stone-700 group-hover:text-orange-600 transition-colors font-light">팀 문제의 8할은 사람의 문제가 아니다</span>
+                            <span class="text-xs text-stone-400 font-mono">Jul 9</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 📧 뉴스레터 구독 신청 섹션 -->
+        <section class="p-8 rounded-2xl bg-white border border-stone-200/80 shadow-sm space-y-4">
+            <div class="space-y-1">
+                <h2 class="text-sm font-medium text-stone-900">Newsletter Subscription</h2>
+                <p class="text-xs text-stone-500 font-light">새로운 글과 단상을 이메일로 받아보실 수 있습니다.</p>
+            </div>
+            <form action="https://formspree.io/f/mrpeadjv" method="POST" class="flex gap-2">
+                <input type="email" name="email" required placeholder="이메일 주소를 입력하세요" class="flex-1 bg-stone-50 border border-stone-200 rounded-xl px-4 py-2.5 text-xs text-stone-800 focus:outline-none focus:border-orange-500">
+                <button type="submit" class="bg-stone-900 text-stone-100 px-5 py-2.5 rounded-xl text-xs font-medium hover:bg-orange-600 transition-colors">
+                    구독하기
+                </button>
+            </form>
+        </section>
+
+        <!-- Philosophy -->
+        <section class="space-y-3">
+            <h2 class="text-xs font-mono uppercase tracking-widest text-orange-600 font-medium">Philosophy</h2>
+            <p class="text-stone-700 text-sm leading-relaxed font-light">
+                사람들이 자신의 삶의 목적을 발견하고 실현할 수 있도록 돕습니다. 스스로의 온전한 가능성을 신뢰하며 걸어가는 여정의 든든한 도반이 되기를 바랍니다.
             </p>
         </section>
 
-        <!-- Expertise & Role -->
-        <section class="space-y-4">
-            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-500">Expertise</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/80 space-y-1">
-                    <div class="font-medium text-white">Business Coaching</div>
-                    <div class="text-zinc-400 text-xs">C-Level 코칭, ICF PCC & ACTC (국내 1호 팀코치), CPCC</div>
+        <!-- Expertise & Experience -->
+        <section class="space-y-6">
+            <h2 class="text-xs font-mono uppercase tracking-widest text-orange-600 font-medium">Expertise & Experience</h2>
+            <div class="space-y-4 text-sm text-stone-700 font-light">
+                <div>
+                    <strong class="font-medium text-stone-900 block mb-1">Coaching & Leadership</strong>
+                    <p class="text-xs leading-relaxed">
+                        &bull; Coaching: C-Level 비즈니스 코칭, 팀코칭 (ICF PCC & ACTC, CPCC)<br>
+                        &bull; Leadership: 팀리더십 & 팀워크 개발
+                    </p>
                 </div>
-                <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/80 space-y-1">
-                    <div class="font-medium text-white">Leadership & Culture</div>
-                    <div class="text-zinc-400 text-xs">기업 리더/팀 트레이닝, 팀워크 개발, 조직문화 에이블러</div>
+                <div>
+                    <strong class="font-medium text-stone-900 block mb-1">Career</strong>
+                    <p class="text-xs leading-relaxed text-stone-600 mb-1 font-medium text-stone-900">
+                        HRD Lead &middot; 팀코치 / C-Level 비즈니스 코치
+                    </p>
+                    <p class="text-xs leading-relaxed text-stone-600">
+                        정림건축 인재개발팀 팀장 & 하우코칭 파트너 코치 (현)<br>
+                        리얼워크 리더십코칭 소장 (전), 한국리더십센터 성장혁신본부 책임연구원 (전)
+                    </p>
+                </div>
+                <div>
+                    <strong class="font-medium text-stone-900 block mb-1">Major Projects</strong>
+                    <p class="text-xs leading-relaxed text-stone-600">
+                        현대자동차, SKT, LG, SSG.COM 등 기업 일하는 방식 내재화 및 팀효과성·리더십 워크숍 설계 및 진행
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- Major Projects -->
-        <section class="space-y-3">
-            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-500">Major Projects</h2>
-            <p class="text-xs text-zinc-400 leading-relaxed">
-                현대자동차, SKT, LG, SSG.COM, G마켓, 아스트라제네카, 한독, HL Klemove, 남양유업 등 유수의 기업 일하는 방식 내재화 및 팀효과성·리더십 워크숍 설계 및 진행
-            </p>
-        </section>
-
-        <!-- Publications & Writing -->
+        <!-- Publications -->
         <section class="space-y-4">
-            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-500">Publications & Writing</h2>
-            <ul class="space-y-2 text-sm text-zinc-300">
+            <h2 class="text-xs font-mono uppercase tracking-widest text-orange-600 font-medium">Publications</h2>
+            <ul class="space-y-3 text-sm text-stone-700 font-light">
                 <li class="flex justify-between items-baseline">
-                    <span>《팀워크 리부트》</span>
-                    <span class="text-xs text-zinc-500">리얼러닝, 2025</span>
+                    <a href="https://product.kyobobook.co.kr/detail/S000218203438" target="_blank" class="font-normal text-stone-900 hover:text-orange-600 transition-colors underline underline-offset-4 decoration-stone-300">《팀워크 리부트》</a>
+                    <span class="text-xs text-stone-400">리얼러닝, 2025</span>
                 </li>
                 <li class="flex justify-between items-baseline">
-                    <span>《커피툴스》</span>
-                    <span class="text-xs text-zinc-500">열린세상, 2016</span>
+                    <a href="https://product.kyobobook.co.kr/detail/S000001515862" target="_blank" class="font-normal text-stone-900 hover:text-orange-600 transition-colors underline underline-offset-4 decoration-stone-300">《커피툴스》</a>
+                    <span class="text-xs text-stone-400">열린세상, 2016</span>
                 </li>
                 <li class="flex justify-between items-baseline">
-                    <span>《100일 자동차 신혼여행 훔쳐보기》</span>
-                    <span class="text-xs text-zinc-500">디지털북스, 2007</span>
+                    <a href="https://product.kyobobook.co.kr/detail/S000000938237" target="_blank" class="font-normal text-stone-900 hover:text-orange-600 transition-colors underline underline-offset-4 decoration-stone-300">《100일 자동차 신혼여행 훔쳐보기》</a>
+                    <span class="text-xs text-stone-400">디지털북스, 2007</span>
                 </li>
             </ul>
-            <div class="pt-2">
-                <a href="https://brunch.co.kr/@mekhander" target="_blank" class="text-sm text-zinc-400 hover:text-white underline underline-offset-4 transition-colors">
+            <div class="pt-1">
+                <a href="https://brunch.co.kr/@mekhander" target="_blank" class="text-sm text-stone-600 hover:text-orange-600 transition-colors underline underline-offset-4">
                     Brunch Archive &rarr;
                 </a>
             </div>
         </section>
 
-        <!-- Routine & Life -->
+        <!-- Journey & Interest -->
         <section class="space-y-4">
-            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-500">Routine & Life</h2>
-            <p class="text-sm text-zinc-300">
-                Running (10km / PB 41:40) / 네 아이의 아빠
-            </p>
-        </section>
-
-        <!-- Links -->
-        <section class="space-y-4 pt-6 border-t border-zinc-900">
-            <div class="flex gap-6 text-sm">
-                <a href="https://www.linkedin.com/in/%EC%84%B1%EA%B7%9C-%EB%B0%95-543b2062/" target="_blank" class="text-zinc-400 hover:text-white transition-colors">
-                    LinkedIn
-                </a>
+            <h2 class="text-xs font-mono uppercase tracking-widest text-orange-600 font-medium">Journey & Interest</h2>
+            <div class="space-y-2 text-sm text-stone-700 font-light">
+                <p><strong class="font-medium text-stone-900">Journey:</strong> KAIST MBA candidate / ICF Coaching Supervisor</p>
+                <p><strong class="font-medium text-stone-900">Interest:</strong> Running</p>
             </div>
         </section>
 
+        <!-- Footer / Links -->
+        <footer class="pt-8 border-t border-stone-200 flex justify-between items-center text-sm text-stone-500">
+            <span>&copy; Sunggyu Park</span>
+            <a href="https://www.linkedin.com/in/%EC%84%B1%EA%B7%9C-%EB%B0%95-543b2062/" target="_blank" class="hover:text-orange-600 transition-colors">
+                LinkedIn
+            </a>
+        </footer>
+
     </main>
+
+    <!-- 모달 팝업 창들 -->
+    <!-- 글 1: 녹내장이 찾아왔다 -->
+    <div id="essay1" class="fixed inset-0 bg-stone-900/40 backdrop-blur-sm hidden justify-center items-center px-4 z-50">
+        <div class="bg-[#FBF9F5] border border-stone-200 max-w-xl w-full max-h-[85vh] overflow-y-auto p-8 rounded-2xl shadow-xl space-y-6 relative">
+            <button onclick="closeModal('essay1')" class="absolute top-6 right-6 text-stone-400 hover:text-orange-600 text-sm font-mono">[ CLOSE ]</button>
+            <div class="space-y-2 pt-2">
+                <span class="text-xs font-mono text-orange-600 uppercase tracking-wider">Essay</span>
+                <h2 class="text-xl font-medium text-stone-900">녹내장이 찾아왔다</h2>
+                <p class="text-xs text-stone-500 font-light">눈을 감는 시간, 삶이 선명해졌다</p>
+            </div>
+            <div class="text-sm text-stone-700 leading-relaxed font-light space-y-4 border-t border-stone-200 pt-6">
+                <p>얼마 전 정기 종합검진을 받았다. 검진 결과지에는 ‘녹내장 의심 소견이 있으니 안과에서 정밀검사를 받으라’고 적혀 있었다.</p>
+                <p>녹내장이 무엇인지도 잘 몰랐다. 별일 아니겠지 싶어 안과 검진을 미루었다. 하지만 마음 한구석이 영 찝찝했다. 빨리 정밀검사를 받고 아무 일도 아니라는 말을 들어야 마음이 편해질 것 같았다.</p>
+                <p>안과에 가서 검사를 받았다. 결과는 녹내장이었다.</p>
+                <p>녹내장은 시신경이 서서히 손상되어 시야가 좁아지고, 심하면 실명에 이르 수도 있는 질환이라고 했다. 이미 손상된 시신경은 되살릴 수 없기 때문에 치료의 목적은 회복이 아니라 남아 있는 시신경을 지키고 질환의 진행을 늦추는 데 있었다.</p>
+                <p>시신경이 손상되면 보이지 않는 부분이 생기지만, 뇌가 그 부분을 어느 정도 보완해 주기 때문에 초기에는 자각하기 어렵다고 했다. 증상을 느껴 병원을 찾았을 때는 이미 상당히 진행된 경우도 많다고 한다.</p>
+                <p>다행히 나는 아직 초기였다. 지금부터 잘 관리하면 진행을 늦추고 오랫동안 시력을 지키며 살아갈 수 있다고 했다.</p>
+                <p>의사의 덤덤한 설명을 듣고 병원을 나올 때는 의외로 별생각이 들지 않았다. 그러나 그날 이후 며칠 동안 ‘녹내장’이라는 세 글자가 머릿속을 떠나지 않았다.</p>
+                <p>오십을 바라보는 나이가 되면서 시력이 나빠지고 노안도 찾아왔다. 휴대전화의 작은 글자가 잘 보이지 않고, 상품 상자에 적힌 설명도 읽기 어려워졌다. 나이가 들어 그러려니 했다.</p>
+                <p>그런데 이제는 한쪽 눈의 시력을 잃을 수도 있다는 생각이 자꾸 마음에 걸렸다.</p>
+                <p>가끔 한쪽 눈을 가리고 생활해 보았다. 조금 어지럽고 불편했지만, 그럭저럭 견딜 만했다.</p>
+                <p>그러다 이런 생각이 들었다. 그래도 아직 한쪽 눈이 남아 있잖아.</p>
+                <p>이제 나는 평생 눈을 관리해야 한다. 아침에 일어나면 가장 먼저 안약을 넣는다. 안약이 잘 스며들도록 잠시 눈을 감고 기다린다.</p>
+                <p>그렇게 내 아침에 새로운 시간이 생겼다. 눈을 감고 있는 동안 기도한다.</p>
+                <p class="font-medium text-stone-900 bg-orange-50 border border-orange-100 p-4 rounded-xl">
+                    내 눈의 주인은 하나님이십니다.<br>
+                    내 삶의 주인도 하나님이십니다.<br>
+                    당신께 제 삶을 드립니다.
+                </p>
+                <p>녹내장이라는 질환을 만난 뒤 오히려 내 삶은 조금 더 선명해졌다. 아침마다 하나님이 내 삶의 주인이심을 고백하게 되었기 때문이다.</p>
+                <p>그렇다. 설령 언젠가 시력을 모두 잃는다 해도 내 삶의 주인은 여전히 하나님이시다. 그때에도 하나님은 나를 인도하실 것이다.</p>
+                <p>눈을 감고서야 비로소 보이는 것이 있다. 내가 모든 것을 붙잡고 살아가는 것이 아니라는 사실. 어떤 일이 일어나더라도 나를 이끄시는 분이 계신다는 믿음.</p>
+                <p>그 믿음이 나를 조금 더 단단하게 한다. 그리고 내 마음에 평안을 들인다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 글 2: 회사에서 가장 힘든 사람은 -->
+    <div id="essay2" class="fixed inset-0 bg-stone-900/40 backdrop-blur-sm hidden justify-center items-center px-4 z-50">
+        <div class="bg-[#FBF9F5] border border-stone-200 max-w-xl w-full max-h-[85vh] overflow-y-auto p-8 rounded-2xl shadow-xl space-y-6 relative">
+            <button onclick="closeModal('essay2')" class="absolute top-6 right-6 text-stone-400 hover:text-orange-600 text-sm font-mono">[ CLOSE ]</button>
+            <div class="space-y-2 pt-2">
+                <span class="text-xs font-mono text-orange-600 uppercase tracking-wider">Jul 29, 2026 &middot; Coach and Leadership Trainer</span>
+                <h2 class="text-xl font-medium text-stone-900">회사에서 가장 힘든 사람은, 내가 만든 사람입니다</h2>
+                <p class="text-xs text-stone-500 font-light">결국 우리에게 남는 질문은 하나입니다. "나는 어떤 사람이 되고 싶은가?</p>
+            </div>
+            <div class="text-sm text-stone-700 leading-relaxed font-light space-y-4 border-t border-stone-200 pt-6">
+                <p>회사에서 가장 힘든 것은 일이 아니라 사람이라는 말을 자주 듣습니다.</p>
+                <p>회의가 끝나고 나오는데 기분이 상합니다. 분명 맞는 말을 했는데 분위기가 싸해졌습니다. 열심히 도왔는데도 인정받지 못한 것 같습니다. 누군가는 별일 아닌 것처럼 지나가는데, 나는 그 한마디가 며칠 동안 머릿속을 떠나지 않습니다.</p>
+                <p>그런 날이면 우리는 늘 같은 질문을 합니다. "도대체 저 사람은 왜 저럴까?"</p>
+                <p>회사에서 관계가 어려워질 때 우리는 대부분 상대를 분석하기 시작합니다. '팀장이 예민해서 그래.', '동료가 원래 이기적인 사람이야.', '조직문화가 이상해.' 물론 그럴 수도 있습니다.</p>
+                <p>회사에서 대화중 어떤 사람이 이런 말을 했습니다. "저는 늘 피해를 보는 것 같습니다. 사람들에게 진심으로 대했는데, 결국 돌아오는 건 상처뿐이었습니다." 많은 사람들이 고개를 끄덕일 이야기입니다.</p>
+                <p>그런데 대화를 이어가던 중 뜻밖의 질문이 나왔습니다. "상대는 지금 어떻게 느끼고 있을까요?" 잠시 침묵이 흘렀습니다. 생각해 본 적이 없었던 것입니다. 계속 이런 질문만 하고 있었기 때문입니다. '왜 나한테 저러지?', '왜 나를 인정하지 않지?', '왜 나만 힘들지?' 상대는 사라지고 나만 남아 있었습니다. 그 순간 질문받은 사람은 조용히 말했습니다.</p>
+                <p class="font-medium text-stone-900 bg-orange-50 border border-orange-100 p-4 rounded-xl">"저는 계속 피해자라고 생각하고 있었네요."</p>
+                <p>그 말이 오래 남았습니다. 사람은 피해자의 자리에 서면 세상을 그 자리에서 바라보게 됩니다. 회의에서 나를 부르지 않은 것도, 인사를 짧게 한 것도, 표정이 굳어 있던 것도, 모두 나를 향한 행동처럼 느껴집니다. 그러면 당연히 방어하게 됩니다.</p>
+                <p>여기서 우리가 놓치고 있는 것이 있습니다. 우리는 장면을 보지만, 그 장면은 사건 하나로 만들어지지 않는다는 사실입니다. 관계는 맥락으로 만들어집니다. 신뢰도 조금씩 쌓이고, 실망도 조금씩 쌓이고, 서운함도 조금씩 쌓입니다. 은행 통장처럼 관계에도 보이지 않는 잔고가 있습니다.</p>
+                <p>어느 날 상대가 유난히 크게 반응했다면 그날의 그 한마디 때문이 아닐 수도 있습니다. 이미 오래전부터 쌓여온 관계의 잔고 때문일 수도 있습니다.</p>
+                <p>여기서 필요한 것이 자존감입니다. 자존감은 다른 사람의 반응이 내 존재의 가치를 결정하지 못하게 하는 힘입니다. 누군가 나를 인정하지 않아도, 오해하더라도, 섭섭하게 하더라도, 나는 어떤 사람으로 살아갈 것인지를 내가 결정하는 힘입니다.</p>
+                <p>또 하나 필요한 것이 공감입니다. 공감의 시작은 질문입니다. "저 사람은 저렇게 느낀 이유가 뭘까?" 그 사람은 무엇이 두려웠을까. 무엇을 지키고 싶었을까. 무엇을 인정받고 싶었을까.</p>
+                <p>그러다 문득 이런 생각이 들었습니다. 나에게 가장 중요한 질문은 무엇인가. <strong>"나는 어떤 사람이 되고 싶은가?"</strong></p>
+                <p>상처받았으니 똑같이 상처를 줄 사람인가. 인정받지 못했으니 마음을 닫을 사람인가. 아니면 힘들어도 내가 중요하게 생각하는 가치를 지켜갈 사람인가.</p>
+                <p>사람들은 언제나 내 기대대로 행동하지 않습니다. 하지만 내가 어떤 사람으로 살아갈지는 언제나 내가 선택할 수 있습니다. 그래서 사람 때문에 힘든 날이면 더 이상 "왜 저 사람은 저럴까?"를 오래 붙잡지 않으려고 합니다. 대신 이렇게 묻습니다. "나는 어떤 사람이 되고 싶은가?"</p>
+                <p>어쩌면 좋은 관계는 좋은 사람을 만나는 것에서 시작되는 것이 아니라, 좋은 사람이 되기로 선택하는 것에서 시작되는지도 모르겠습니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 글 3: 좋은 팀은 탁월한 사람들의 집합이 아니다 -->
+    <div id="essay3" class="fixed inset-0 bg-stone-900/40 backdrop-blur-sm hidden justify-center items-center px-4 z-50">
+        <div class="bg-[#FBF9F5] border border-stone-200 max-w-xl w-full max-h-[85vh] overflow-y-auto p-8 rounded-2xl shadow-xl space-y-6 relative">
+            <button onclick="closeModal('essay3')" class="absolute top-6 right-6 text-stone-400 hover:text-orange-600 text-sm font-mono">[ CLOSE ]</button>
+            <div class="space-y-2 pt-2">
+                <span class="text-xs font-mono text-orange-600 uppercase tracking-wider">Jul 10, 2026 &middot; Coach and Leadership Trainer</span>
+                <h2 class="text-xl font-medium text-stone-900">좋은 팀은 탁월한 사람들의 집합이 아니다</h2>
+                <p class="text-xs text-stone-500 font-light">리더에게 필요한 역량은</p>
+            </div>
+            <div class="text-sm text-stone-700 leading-relaxed font-light space-y-4 border-t border-stone-200 pt-6">
+                <p>많은 리더들이 이런 말을 합니다. "우리 팀은 한 명씩 보면 다 좋은 사람들인데 같이 일하기는 쉽지 않습니다." 맞습니다.</p>
+                <p>대부분의 조직에는 좋은 사람들이 있습니다. 그런데도 성과는 기대만큼 나오지 않습니다. 사람들이 일을 못해서가 아닙니다. 함께 일하지 못해서 그렇습니다. 그것은 함께 일하는 법을 배우지 못했기 때문입니다.</p>
+                <p>회사에 들어오면 직무 교육을 받습니다. 설계, 영업, 재무, 프로그램을 배우고 AI를 배우기도 합니다. 그런데 정작 가장 중요한 것은 거의 배우지 않습니다. 함께 일하는 방법입니다. 회의는 어떻게 해야 하는지, 갈등은 어떻게 다루는지, 피드백은 어떻게 주고받는지 배우지 않은 채 함께 성과를 내라고 합니다.</p>
+                <p>구글은 인재 채용에 엄격하기로 유명합니다. 하지만 구글에서도 어떤 팀은 성과가 높고 어떤 팀은 성과를 못 낸다는 것을 발견했습니다. 그래서 연구한 것이 <strong>아리스토텔레스 프로젝트</strong>입니다. 연구 결과, 가장 뛰어난 개인이 많은 팀이 아니라 팀 구성원들의 <strong>상호작용(팀워크)</strong>이 뛰어난 팀이 성과를 낸다는 것을 발견했습니다.</p>
+                <p>효과적인 팀은 공통적으로 다음의 특징이 있었습니다: 팀에서 필요한 이야기를 어렵지 않게 하고, 서로 간의 기대수준을 잘 합의하고, 목표를 달성하는 구조와 역할이 명확하고, 일의 의미가 있었습니다. 이것들은 개인의 역량이 아니라 팀이 함께 만들어 가는 <strong>일하는 방식</strong>입니다.</p>
+                <p>회의도 연습해야 하고, 피드백도 상대를 평가하는 것이 아니라 함께 더 나아지기 위한 대화로 다뤄야 합니다. 갈등 역시 피하지 않고 문제를 함께 해결하는 도구로 삼아야 합니다.</p>
+                <p>그래서 리더의 역할도 달라집니다. 앞으로 조직의 경쟁력은 '누가 더 똑똑한 사람을 모았는가'가 아니라, <strong>'누가 더 잘 함께 일하는가'</strong>에서 결정될 것입니다.</p>
+                <p class="font-medium text-stone-900 bg-orange-50 border border-orange-100 p-4 rounded-xl">
+                    원칙은 함께 일하기 위한 판단기준이고, 규칙은 행동기준입니다.<br>
+                    리더는 사람을 관리하는 사람이 아니라 사람들이 함께 성장하는 방식을 만들어 가는 사람입니다.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 글 4: 팀 문제의 8할은 사람의 문제가 아니다 -->
+    <div id="essay4" class="fixed inset-0 bg-stone-900/40 backdrop-blur-sm hidden justify-center items-center px-4 z-50">
+        <div class="bg-[#FBF9F5] border border-stone-200 max-w-xl w-full max-h-[85vh] overflow-y-auto p-8 rounded-2xl shadow-xl space-y-6 relative">
+            <button onclick="closeModal('essay4')" class="absolute top-6 right-6 text-stone-400 hover:text-orange-600 text-sm font-mono">[ CLOSE ]</button>
+            <div class="space-y-2 pt-2">
+                <span class="text-xs font-mono text-orange-600 uppercase tracking-wider">Jul 9, 2026 &middot; Coach and Leadership Trainer</span>
+                <h2 class="text-xl font-medium text-stone-900">팀 문제의 8할은 사람의 문제가 아니다</h2>
+                <p class="text-xs text-stone-500 font-light">리더가 가장 먼저 해야 하는 것!</p>
+            </div>
+            <div class="text-sm text-stone-700 leading-relaxed font-light space-y-4 border-t border-stone-200 pt-6">
+                <p>팀에 문제가 생기면 리더는 바빠집니다. 갈등을 중재하고, 회의를 정리하고, 업무를 다시 조정합니다. 많은 리더는 이런 상황을 보며 사람을 바꾸고 싶어 합니다. '저 사람이 조금만 더 성숙하면 좋을 텐데.'</p>
+                <p>하지만 리더로서 한 가지 질문을 먼저 던져보면 좋겠습니다. <strong>'이 문제가 정말 사람의 문제일까, 아니면 원칙이 없는 문제일까?'</strong></p>
+                <p>팀에서 반복되는 문제의 대부분은 사람보다 원칙과 규칙의 부재에서 시작됩니다. 저는 팀 문제의 80%는 좋은 원칙과 규칙으로 해결할 수 있고, 나머지 20%는 구성원들의 성숙이 해결한다고 생각합니다.</p>
+                <p>회의에 원칙이 있습니까? 역할과 업무는 어떻게 나누었습니까? 피드백과 갈등 해결의 기준이 있습니까? 이런 원칙이 없다면 좋은 사람들만 모여도 회의는 반복해서 어려워집니다. 반대로 몇 가지 원칙만 세워도 회의는 놀라울 만큼 달라집니다.</p>
+                <p>좋은 원칙은 처벌하기 위한 규정이 아니라 함께 일하기 위한 약속입니다. 사람들은 안정감을 느낄 때 더 자유롭게 의견을 내고 적극적으로 협력합니다.</p>
+                <p>그렇다면 나머지 20%는 무엇일까요? 원칙이 있어도 자신의 의견만 고집하거나 책임을 회피하는 영역은 겸손, 책임감, 자기 성찰 같은 성숙 요소가 해결합니다.</p>
+                <p class="font-medium text-stone-900 bg-orange-50 border border-orange-100 p-4 rounded-xl">
+                    원칙은 조직을 안정적으로 운영하게 만듭니다.<br>
+                    성숙은 조직을 위대하게 만듭니다.
+                </p>
+                <p>팀에 문제가 생길 때마다 사람을 바꾸려 하지 마십시오. 먼저 원칙을 점검해 보십시오. 좋은 원칙은 좋은 팀을 만들고, 성숙한 사람은 탁월한 팀을 만듭니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모달 및 슬라이더 제어 스크립트 -->
+    <script>
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+            document.getElementById(id).classList.add('flex');
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('flex');
+            document.getElementById(id).classList.add('hidden');
+        }
+        function scrollSlider(direction) {
+            const slider = document.getElementById('slider');
+            const scrollAmount = 340; // 카드 너비 + 간격만큼 스크롤
+            slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+    </script>
 
 </body>
 </html>
